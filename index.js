@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
   // Express will serve index.html to unknown routes
   const path = require('path')
   app.get('*', (req, res) => {
-    res.send(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   })
 }
 
