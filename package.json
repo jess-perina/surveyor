@@ -26,9 +26,10 @@
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
-    "stripe": "^6.28.0"
+    "stripe": "^6.28.0",
+    "volleyball": "^1.5.1"
   },
   "devDependencies": {
-    "volleyball": "^1.5.1"
+    
   }
 }
