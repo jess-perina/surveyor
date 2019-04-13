@@ -12,8 +12,7 @@
     "react-scripts": "2.1.8",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,6 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6"
   }
 }
