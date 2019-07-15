@@ -38,4 +38,10 @@ module.exports = app => {
         res.status(422)
       }
   })
+
+  app.post('/api/surveys/webhooks', (req, res) => {
+    console.log(req.body.email)
+    console.log(req.body.url)
+    res.send()
+  })
 }
