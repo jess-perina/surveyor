@@ -49,6 +49,16 @@ module.exports = app => {
       }
   })
 
+  app.delete('/api/surveys/:id', requireLogin, async (req, res) => {
+    const { id } = req.params
+    try {
+      await Survey.deleteOne( { _id: id } )
+      res.sendStatus(200)
+    } catch (err) {
+      res.status(500)
+    }
+  });
+
   app.post('/api/surveys/webhooks', (req, res) => {
     const p = new Path('/api/surveys/:surveyId/:choice')
 
