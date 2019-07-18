@@ -1,18 +1,30 @@
 import React, { Component } from 'react'
+import M from 'materialize-css';
 import { connect } from 'react-redux'
 import { fetchSurveys, deleteSurvey } from '../../actions'
+
+import AlertModal from '../AlertModal'
 
 class SurveyList extends Component {
   componentDidMount() {
     this.props.fetchSurveys()
+    M.AutoInit()
+  }
+
+  alertDelete(id) {
+    let alert = M.Modal.getInstance(document.querySelector('.modal'))
+    alert.surveyId = id
+    console.log(alert)
+    alert.open()
+    // this.props.deleteSurvey(id)
   }
 
   surveyDelete(id) {
+    console.log(id)
     this.props.deleteSurvey(id)
   }
 
   renderSurveys() {
-    console.log(this.props.surveys)
     return this.props.surveys.sort((a, b) => new Date(b.dateSent) - new Date(a.dateSent))
       .map(survey => {
         return (
@@ -28,10 +40,12 @@ class SurveyList extends Component {
               <a href="!#">YES: {survey.yes}</a>
               <a href="!#">NO: {survey.no}</a>
               <button className="right btn-flat red white-text"
-                onClick={() => {this.surveyDelete(survey._id)}}>
+                onClick={() => {this.alertDelete(survey._id)}}>
                 Delete
               </button>
+              
             </div>
+            
           </div>
         )
       })
@@ -41,6 +55,9 @@ class SurveyList extends Component {
     return (
       <div>
         {this.renderSurveys()}
+
+        <AlertModal onDelete={() => this.surveyDelete()} id={alert.id}/>
+        
       </div>
     )
   }
